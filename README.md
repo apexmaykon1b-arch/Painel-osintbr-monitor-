@@ -1,12 +1,9 @@
-# Painel-osintbr-monitor-
-Essa ferramenta compatível com termux e kali/Debian coleta informações de perfils/sites a cada um horário e salva antes e depois, o perfil investigado mudou a bio? A ferramenta percebe e coleta a alteração 
 
 ---
 
-### 🔍 Painel OSINTBR Monitor
+# Painel-osintbr-monitor-
 
-CLI para **Termux** e **Kali**: coleta de perfis públicos, comparação de mudanças e checagem de username.  
-Interface **verde e amarela**, fácil de usar.
+Ferramenta para **Termux** e **Kali/Debian**: coleta perfis/sites, salva versões e compara mudanças (ex.: bio alterada).
 
 **Repositório:**  
 https://github.com/apexmaykon1b-arch/Painel-osintbr-monitor-
@@ -14,12 +11,12 @@ https://github.com/apexmaykon1b-arch/Painel-osintbr-monitor-
 ---
 
 ### O que faz
-- **GitHub (estável):** nome, bio, foto, seguidores, repos, empresa, local, data de atualização do perfil  
-- **Página / URL:** título, description, imagem, e-mails, métricas se a página expuser  
+- **GitHub (estável):** nome, bio, foto, seguidores, repos, empresa, local, atualização do perfil  
+- **Página / URL:** título, description, imagem, e-mails, métricas se expuser  
 - **Username:** testa @ em várias redes  
 - **Monitor:** salva alvos, recheca e mostra o que mudou  
 
-> Instagram / TikTok / X podem bloquear leitura automática. Para monitoramento estável, prefira GitHub ou sites públicos.
+> Instagram / TikTok / X podem bloquear leitura automática. Prefira GitHub ou sites públicos.
 
 ---
 
@@ -27,24 +24,33 @@ https://github.com/apexmaykon1b-arch/Painel-osintbr-monitor-
 
 ```bash
 pkg update -y
-pkg install python git -y
-termux-setup-storage
+
+pkg install python git unzip -y
 
 cd ~
+
 git clone https://github.com/apexmaykon1b-arch/Painel-osintbr-monitor-.git
+
 cd Painel-osintbr-monitor-
 
+# extrair o ZIP do projeto
+
+unzip -o painel-osintbr-monitor.zip -d .
+cd painel-osintbr-monitor
+
 pip install -r requirements.txt
+
 python main.py
 ```
 
-Se a pasta vier com subpasta:
+Se o nome do ZIP for outro:
 
 ```bash
 cd ~/Painel-osintbr-monitor-
-ls
-# se aparecer painel-osintbr-monitor:
-cd painel-osintbr-monitor
+ls *.zip
+unzip -o NOME_DO_ZIP.zip -d .
+find . -name "main.py"
+cd pasta/que/aparecer
 pip install -r requirements.txt
 python main.py
 ```
@@ -55,10 +61,14 @@ python main.py
 
 ```bash
 sudo apt update
-sudo apt install -y python3 python3-pip python3-venv git
+sudo apt install -y python3 python3-pip python3-venv git unzip
 
+cd ~
 git clone https://github.com/apexmaykon1b-arch/Painel-osintbr-monitor-.git
 cd Painel-osintbr-monitor-
+
+unzip -o painel-osintbr-monitor.zip -d .
+cd painel-osintbr-monitor
 
 python3 -m venv .venv
 source .venv/bin/activate
@@ -73,20 +83,23 @@ python main.py
 1  →  Coletar GitHub (@usuario)
 2  →  Coletar URL pública
 3  →  Checar username
-4  →  Listar alvos salvos
+4  →  Listar alvos
 5  →  Rechecagem (compara mudanças)
 0  →  Sair
 ```
 
-Dados salvos em: `data/targets.json`
+Dados em: `data/targets.json`
 
 ---
 
-### Atualizar depois
+### Atualizar
 
 ```bash
 cd ~/Painel-osintbr-monitor-
 git pull
+# se o ZIP foi atualizado no repo:
+unzip -o painel-osintbr-monitor.zip -d .
+cd painel-osintbr-monitor
 pip install -r requirements.txt
 python main.py
 ```
@@ -94,8 +107,6 @@ python main.py
 ---
 
 ### Aviso
-Uso apenas em **fontes abertas** e alvos com **autorização**. Não contorna login, CAPTCHA nem contas privadas.
-
----
+Uso em **fontes abertas** e alvos **autorizados**. Não contorna login, CAPTCHA nem contas privadas.
 
 **Link:** https://github.com/apexmaykon1b-arch/Painel-osintbr-monitor-
