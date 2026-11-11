@@ -61,19 +61,30 @@ python main.py
 
 ```bash
 sudo apt update
-sudo apt install -y python3 python3-pip python3-venv git unzip
+
+sudo apt install -y 
+
+python3 python3-pip 
+
+python3-venv git unzip
 
 cd ~
+
 git clone https://github.com/apexmaykon1b-arch/Painel-osintbr-monitor-.git
+
 cd Painel-osintbr-monitor-
 
-unzip -o painel-osintbr-monitor.zip -d .
+unzip painel-osintbr-monitor.zip 
+
 cd painel-osintbr-monitor
 
 python3 -m venv .venv
+
 source .venv/bin/activate
+
 pip install -r requirements.txt
-python main.py
+
+python3 main.py
 ```
 
 ---
